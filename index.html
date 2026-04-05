@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+    
+    <link rel="stylesheet" href="src/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="title">TASKS</div>
+
+        <div class="action-bar">
+            <button class="square-btn" id="filter-btn">
+                <div class="filter-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+
+            <button class="square-btn" id="sort-btn">
+                <div class="sort-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+
+            <button class="square-btn primary" id="add-btn" title="Add Task">
+                <span class="btn-label">+</span>
+            </button>
+
+            <button class="square-btn" id="more-btn" title="More Options">
+                <div class="kebab-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+
+        <ul id="task-list"></ul>
+
+        <div id="filter-dropdown" class="dropdown-content">
+            <label>Filter by Status</label>
+            <button onclick="updateFilters('status', 'all')">All</button>
+            <button onclick="updateFilters('status', 'todo')">To-do</button>
+            <button onclick="updateFilters('status', 'done')">Done</button>
+            
+            <label>Filter by Priority</label>
+            <button onclick="updateFilters('priority', 'all')">All</button>
+            <button onclick="updateFilters('priority', 0)">Low</button>
+            <button onclick="updateFilters('priority', 1)">Medium</button>
+            <button onclick="updateFilters('priority', 2)">High</button>
+
+            <label>Category</label>
+            <button onclick="updateFilters('category', 'all')">All</button>
+            <button onclick="updateFilters('category', 'work')">Work</button>
+            <button onclick="updateFilters('category', 'personal')">Personal</button>
+        </div>
+
+        <div id="sort-dropdown" class="dropdown-content">
+            <button onclick="applySort('priority')">Sort by Priority</button>
+            <button onclick="applySort('date')">Sort by Due Date</button>
+        </div>
+    </div>
+
+
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-content wide">
+            <h3 id="modal-title">New Task</h3>
+            
+            <div class="input-group">
+                <label>Title</label>
+                <input type="text" id="task-title" placeholder="Task name..." autofocus>
+            </div>
+
+            <div class="input-group">
+                <label>Description</label>
+                <textarea id="task-desc" placeholder="More details..."></textarea>
+            </div>
+
+            <div class="row">
+                <div class="input-group">
+                    <label>Category</label>
+                    <select id="task-category">
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="health">Health</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Priority</label>
+                    <select id="task-priority">
+                        <option value="0">Low</option>
+                        <option value="1">Medium</option>
+                        <option value="2">Highest</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Due Date</label>
+                <input type="date" id="task-date">
+            </div>
+
+            <div class="modal-actions">
+                <button class="modal-btn cancel" id="close-modal">Cancel</button>
+                <button class="modal-btn confirm" id="save-task">Save Task</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="src/js/script.js"></script>
+</body>
+</html>
